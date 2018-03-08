@@ -2,7 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>Document</title>
+	<title>爸爸的网页</title>
+	<script language="javascript">
+		function formcheck(){
+			var ipreg = "\\b((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\b";
+			var iptmp = new RegExp(ipreg);
+			var ipbool = iptmp.test(addForm.iptext.value);
+			// alert(ipbool);
+			if(!ipbool){
+				alert("错误！请输入正确的IP格式!");
+				addForm.iptext.focus();
+				return false;
+			}
+			if(!(addForm.porttext.value < 65536 & addForm.porttext.value > 0)){
+				alert("错误！port值范围：0-65535");
+				addForm.porttext.focus();
+				return false;
+			}
+		}
+	</script>
 	<style type="text/css">
 		*{
 			margin:0px;
@@ -67,18 +85,19 @@
 			<div class="baseWindow green">
 				<p>发送窗口</p>
 				<p align="center">往IP&port发送数据</p>
-				<form action="xxx.js" method="post" style="background-color: none">
+				<!-- <form action="submit_ok.html" method="post" onsubmit="return formcheck();" > -->
+				<form action="" name="addForm" method="post" onsubmit="return formcheck();">
 					<fieldset>
 						<p>
 							<label>请输入IP:</label>
-							<input name="textfield" required="required" type="text" value="请填写IP..." onfocus="if(value=='请填写IP...'){value=''}" onblur="if(value==''){value='请填写IP...'}" />
+							<input name="iptext" required="required" type="text" value="例如：1.2.3.4" onfocus="if(value=='例如：1.2.3.4'){value=''}" onblur="if(value==''){value='例如：1.2.3.4'}" />
 						</p>
 						<p>
 							<label>请输入Port:</label>
-							<input name="textfield" required="required" type="text" value="请填写port..." onfocus="if(value=='请填写port...'){value=''}" onblur="if(value==''){value='请填写port...'}" />
+							<input name="porttext" required="required" type="text" value="0-65535之间" onfocus="if(value=='0-65535之间'){value=''}" onblur="if(value==''){value='0-65535之间'}" />
 						</p>	
 						<p>
-							<input id="style_submit" type="submit" value="发送" name="submit" id="submint" />
+							<input id="style_submit" type="submit" value="发送" name="submit" />
 						</p>
 					</fieldset>
 				</form>
