@@ -2,100 +2,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>采集工具</title>
+	<title>登陆</title>
 	<script language="javascript">
 		function formcheck(){
-			var ipreg = "\\b((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\b";
-			var iptmp = new RegExp(ipreg);
-			var ipbool = iptmp.test(addForm.iptext.value);
-			// alert(ipbool);
-			if(!ipbool){
-				alert("错误！请输入正确的IP格式!");
-				addForm.iptext.focus();
+			var reg = "/^[a-zA-Z0-9_-]{4,16}$/";
+			var tmp = new RegExp(reg);
+			// 执行正则表达式验证
+			var actbool = tmp.test(login.account.value);
+			var pswdbool = tmp.test(login.passwd.value);
+			if(!actbool){
+				alert("账号或密码错误！");
+				login.account.focus();
 				return false;
 			}
-			if(!(addForm.porttext.value < 65536 & addForm.porttext.value > 0)){
-				alert("错误！port值范围：0-65535");
-				addForm.porttext.focus();
+			if(!pswdbool){
+				alert("账号或密码错误！");
+				login.passwd.focus();
 				return false;
 			}
 		}
 	</script>
-	<style type="text/css">
-		*{
+	<style>
+		/*.*{
 			margin:0px;
-			padding:0px;
-		}
-		.sket{
+			border:4px;
+		}*/
+
+		.mainPaint{
 			width:900px;
-			height:800px;
-			margin:1px;
-			padding:1px;
+			height:600px;
+			padding:4px;
+			background:#B4C7E7;
 			position:absolute;
 		}
-		.main{
-            width: 100%;
-            height: 100%;
-            position: absolute;
-        }
-		.baseWindow{
-			width: 49%;
-			height: 49%;
-			border:1px black solid;
-			margin:1px;
-			float:left;
-		}
-		.blue{
-            background-color: #E1E7C1;
-        }
-        .green{
-            background-color: #9E9C83;
-        }
-        .orange{
-            background-color: #D96B30;
-        }
-        .yellow{
-            background-color: #E7B53C;
-        }
-        .form_label{
-			margin:0px;
+
+		form{
+			width:50%;
+			height:50%;
 			padding:0px;
-        }
-        form{padding:30px 15px 15px 20px;}  
-		form{width:400px;height:100px;}  
-		form fieldset{border:0;align:center;}  
-		form label{display:inline-block;width:100px;text-align:right}  
-		input{width:200px;height:20px;} 
-		#style_submit{
-			width:70px;
-			height:30px;
-			align:right;
+			border:25% 25% 25% 25%;
+			margin:0px;
 		}
+		form fieldset{
+			align:center;
+			border:0px;
+			background-color:red;
+		}
+
+		
 	</style>
+	<script>
+		function formcheck(){
+
+		}
+
+
+	</script>
 </head>
 <body>
-	<link rel="stylesheet" href="login.html" />
-	<div class="baseWindow green">
-		<p>发送窗口</p>
-		<p align="center">往IP&port发送数据</p>
-		<!-- <form action="submit_ok.html" method="post" onsubmit="return formcheck();" > -->
-		<form action="" name="addForm" method="post" onsubmit="return formcheck();">
-			<fieldset>
-				<p>
-					<label>请输入IP:</label>
-					<input name="iptext" required="required" type="text" value="例如：1.2.3.4" onfocus="if(value=='例如：1.2.3.4'){value=''}" onblur="if(value==''){value='例如：1.2.3.4'}" />
-				</p>
-				<p>
-					<label>请输入Port:</label>
-					<input name="porttext" required="required" type="text" value="0-65535之间" onfocus="if(value=='0-65535之间'){value=''}" onblur="if(value==''){value='0-65535之间'}" />
-				</p>	
-				<p>
-					<input id="style_submit" type="submit" value="发送" name="submit" />
-				</p>
-			</fieldset>
-		</form>
-		<div style="background-color: #EAEAEA;width:400px;height:100px;margin-top:0px">发送日志输出界面</div>
-		<button style="width: 70px;height:30px;margin-top:8px">刷新</button>
-	</div>	
+<div class="mainPaint">
+	<form action="" name="login" method="post" onsubmit="return formcheck()">
+		<fieldset>
+			<p>
+				<label>请输入账号：</label>
+				<input name="account" type="text" required="required" value="您的账号" onfocus="if(value=='您的账号'){value=''}" onblur="if(value==''){value='您的账号'}" />
+			</p>
+			<p>
+				<label>请输入密码：</label>
+				<input name="passwd" type="text" required="required" value="您的密码" onfocus="if(value=='您的密码'){value=''}" onblur="if(value==''){value='您的密码'}" />
+			</p>
+			<p>
+				<input name="submit" type="submit" value="登陆" />
+			</p>
+			<p>
+				<a link rel="stylesheet" href="signUp.html" />注册
+			</p>
+		</fieldset>
+	</form>
+</div>
+	
 </body>
 </html>
