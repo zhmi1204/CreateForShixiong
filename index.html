@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>爸爸的网页</title>
+	<title>采集工具</title>
 	<script language="javascript">
 		function formcheck(){
 			var ipreg = "\\b((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\.((?!\\d\\d\\d)\\d+|1\\d\\d|2[0-4]\\d|25[0-5])\\b";
@@ -74,51 +74,28 @@
 	</style>
 </head>
 <body>
-	<div class="sket">
-		<div class="main">
-			<div class="baseWindow blue">
-				<p>接收窗口</p>
-				<p align="center">接收IP&port并解析报文</p>
-				<div style="background-color: #EAEAEA;width:400px;height:200px;margin-top:8px">接受数据输出界面</div>
-				<button style="width: 70px;height:30px;margin-top:8px">刷新</button>
-			</div>
-			<div class="baseWindow green">
-				<p>发送窗口</p>
-				<p align="center">往IP&port发送数据</p>
-				<!-- <form action="submit_ok.html" method="post" onsubmit="return formcheck();" > -->
-				<form action="" name="addForm" method="post" onsubmit="return formcheck();">
-					<fieldset>
-						<p>
-							<label>请输入IP:</label>
-							<input name="iptext" required="required" type="text" value="例如：1.2.3.4" onfocus="if(value=='例如：1.2.3.4'){value=''}" onblur="if(value==''){value='例如：1.2.3.4'}" />
-						</p>
-						<p>
-							<label>请输入Port:</label>
-							<input name="porttext" required="required" type="text" value="0-65535之间" onfocus="if(value=='0-65535之间'){value=''}" onblur="if(value==''){value='0-65535之间'}" />
-						</p>	
-						<p>
-							<input id="style_submit" type="submit" value="发送" name="submit" />
-						</p>
-					</fieldset>
-				</form>
-				<div style="background-color: #EAEAEA;width:400px;height:100px;margin-top:0px">发送日志输出界面</div>
-				<button style="width: 70px;height:30px;margin-top:8px">刷新</button>
-			</div>
-
-			<div class="baseWindow orange">
-				<p>日志窗口</p>
-				<p align="center">查看日志</p>
-				<div style="background-color: #EAEAEA;width:400px;height:200px;margin-top:8px">日志输出界面</div>
-				<button style="width: 70px;height:30px;margin-top:8px">刷新</button>
-			</div>
-			<div class="baseWindow yellow">
-				<p>数据库窗口</p>
-				<p align="center">查看已发送IP&port</p>
-				<div style="background-color: #EAEAEA;width:400px;height:200px;margin-top:8px">数据库输出界面</div>
-				<button style="width: 70px;height:30px;margin-top:8px">刷新</button>
-			</div>
-			<!-- test -->
-		</div>
-	</div>
+	<link rel="stylesheet" href="login.html" />
+	<div class="baseWindow green">
+		<p>发送窗口</p>
+		<p align="center">往IP&port发送数据</p>
+		<!-- <form action="submit_ok.html" method="post" onsubmit="return formcheck();" > -->
+		<form action="" name="addForm" method="post" onsubmit="return formcheck();">
+			<fieldset>
+				<p>
+					<label>请输入IP:</label>
+					<input name="iptext" required="required" type="text" value="例如：1.2.3.4" onfocus="if(value=='例如：1.2.3.4'){value=''}" onblur="if(value==''){value='例如：1.2.3.4'}" />
+				</p>
+				<p>
+					<label>请输入Port:</label>
+					<input name="porttext" required="required" type="text" value="0-65535之间" onfocus="if(value=='0-65535之间'){value=''}" onblur="if(value==''){value='0-65535之间'}" />
+				</p>	
+				<p>
+					<input id="style_submit" type="submit" value="发送" name="submit" />
+				</p>
+			</fieldset>
+		</form>
+		<div style="background-color: #EAEAEA;width:400px;height:100px;margin-top:0px">发送日志输出界面</div>
+		<button style="width: 70px;height:30px;margin-top:8px">刷新</button>
+	</div>	
 </body>
 </html>
