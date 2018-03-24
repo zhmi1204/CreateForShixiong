@@ -1,3 +1,4 @@
+<!-- 验证码 -->
 <strong><span style="font-family:KaiTi_GB2312;font-size:18px;"><?php
     header("content-type:text/html charset=utf-8");
      
