@@ -51,15 +51,38 @@
 
 		
 	</style>
+
 	<script>
+		function startTime(){
+			var today=new Date()
+			var h=today.getHours()
+			var m=today.getMinutes()
+			var s=today.getSeconds()
+			var m=today.getMonth()+1;
+			var d= today.getDate();
+			var y= today.getFullYear();
+			// add a zero in front of numbers<10
+			m=checkTime(m)
+			s=checkTime(s)
+			document.getElementById('showtime').innerHTML=h+":"+m+":"+s+"--"+y+"-"+m+"-"+d
+			t=setTimeout('startTime()',500)
+			}
+			function checkTime(i)
+			{
+			if (i<10)
+			{i="0" + i}
+			return i
+		}
+		function pythonServer(){
+			
+		}
 		function formcheck(){
 
 		}
 
-
 	</script>
 </head>
-<body>
+<body onload="startTime()">
 <div class="mainPaint">
 	<form action="" name="login" method="post" onsubmit="return formcheck()">
 		<fieldset>
@@ -79,6 +102,8 @@
 			</p>
 		</fieldset>
 	</form>
+	<div id="showtime"></div>
+	<div id="pythonServer"></div>
 </div>
 	
 </body>
